@@ -29,6 +29,7 @@ $path < $test > ./files/output_21sh
 diff ./files/output_bash ./files/output_21sh > result.txt
 var1=`cat result.txt | grep -c "<"`
 var2=`cat result.txt | grep -c ">"`
+$var1 = $var1 + $var2
 clear
 echo "\033[32mScript Test for 21sh\n\033[0m"
 echo "Your 21sh path: $path"
