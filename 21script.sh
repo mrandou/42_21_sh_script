@@ -13,15 +13,18 @@ then
 		exit 1
 fi
 echo "What test do you want ?"
-select i in "Basics tests" "Hards tests"; do
+select i in "Basics tests" "Hards tests" "Spams tests"; do
 	if [ "$i" = "Basics tests" ]; then
 		test="./files/test/basic_test.sh"
 		break
 	elif [ "$i" = "Hards tests" ]; then
 		test="./files/test/hard_test.sh"
 		break
+	elif [ "$i" = "Spams tests" ]; then
+		test="./files/test/spam_test.sh"
+		break
 	else
-		echo "Wrong answer, please select 1 or 2"
+		echo "Wrong answer, please select 1, 2 or 3"
 fi
 done
 bash < $test > ./files/output_bash
