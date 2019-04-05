@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo Start
 echo "hello world"
 echo "hold

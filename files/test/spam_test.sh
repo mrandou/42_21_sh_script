@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo ebufybfuerbfeyrbfuerybguyrebgreuygerth324er
 echo ebufybfuerbfeyrbfuerybguyrebgreuygerth324er
 echo ebufybfuerbfeyrbfuerybguyrebgreuygerth324er

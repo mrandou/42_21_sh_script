@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo Start
 ls
 ls -a
