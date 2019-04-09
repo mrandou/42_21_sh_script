@@ -1,0 +1,79 @@
+#!/bin/bash
+
+if [ ${#1} -eq 0 ]
+then
+	echo "Please enter the 21/42sh path...\nusage: sh script.sh 21/42sh_PATH"
+	exit 1
+fi
+path=$1
+ls $path
+clear
+if [ $? -eq 1 ]
+then
+		echo "Please enter a good path for 21/42sh...\nusage: sh script.sh 21/42sh_PATH"
+		exit 1
+fi
+
+sh script/start.sh
+ret=$?
+if [ $ret -eq 0 ]
+then
+	exit 0
+elif [ $ret -eq 2 ]
+then
+	sh ./script/target_mod.sh $path
+	clear
+	sh shake_42 $path
+	exit 0
+elif [ $ret -eq 3 ]
+then
+	sh script/result.sh
+	printf "\n"
+	read -p "Please, press enter for continue............" enter
+	sh shake_42 $path
+	exit 0
+
+fi
+
+printf "\n\033[32m"
+printf "What test do you want ?\033[0m\n"
+select i in "Basics tests" "Hards tests" "Spams tests"; do
+	if [ "$i" = "Basics tests" ]; then
+		test="./files/test/basic_test.sh"
+		break
+	elif [ "$i" = "Hards tests" ]; then
+		test="./files/test/hard_test.sh"
+		break
+	elif [ "$i" = "Spams tests" ]; then
+		test="./files/test/spam_test.sh"
+		break
+	else
+		echo "Wrong answer, please select 1, 2 or 3"
+fi
+done
+bash < $test > ./files/output/output_bash
+$path < $test > ./files/output/output_2142sh 
+diff ./files/output/output_bash ./files/output/output_2142sh > ./files/output/result.txt
+var1=`cat ./files/output/result.txt | grep -c "<"`
+var2=`cat ./files/output/result.txt | grep -c ">"`
+clear
+echo "\033[32mScript Test for 21/42sh\n\033[0m"
+echo "Your 21/42sh path: $path"
+echo "1 --> bash ./files/output/result ; 2 --> 21/42sh ./files/output/result\n"
+cat ./files/output/result.txt
+
+if [ $var1 -eq 0 ]  && [ $var2 -eq 0 ]
+	then
+		printf "\033[32m"
+		echo "\ndiff == OK :)"
+		printf "\033[0m"
+	else
+		printf "\033[31m"
+		echo "\ndiff == KO :("
+		printf "\033[32m"
+fi
+printf "\n"
+read -p "Please, press enter for continue............" enter
+clear
+sh shake_42 $path
+exit 0
