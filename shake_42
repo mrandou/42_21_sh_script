@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    shake_42                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/04/11 17:37:16 by mrandou           #+#    #+#              #
+#    Updated: 2019/04/11 18:43:15 by mrandou          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 #!/bin/bash
 
 if [ ${#1} -eq 0 ]
@@ -35,24 +47,8 @@ then
 
 fi
 
-printf "\n\033[32m"
-printf "What test do you want ?\033[0m\n"
-select i in "Basics tests" "Hards tests" "Spams tests"; do
-	if [ "$i" = "Basics tests" ]; then
-		test="./files/test/basic_test.sh"
-		break
-	elif [ "$i" = "Hards tests" ]; then
-		test="./files/test/hard_test.sh"
-		break
-	elif [ "$i" = "Spams tests" ]; then
-		test="./files/test/spam_test.sh"
-		break
-	else
-		echo "Wrong answer, please select 1, 2 or 3"
-fi
-done
-bash < $test > ./files/output/output_bash
-$path < $test > ./files/output/output_2142sh 
+sh ./script/select.sh $path
+
 diff ./files/output/output_bash ./files/output/output_2142sh > ./files/output/result.txt
 var1=`cat ./files/output/result.txt | grep -c "<"`
 var2=`cat ./files/output/result.txt | grep -c ">"`
@@ -60,7 +56,10 @@ clear
 echo "\033[32mScript Test for 21/42sh\n\033[0m"
 echo "Your 21/42sh path: $path"
 echo "1 --> bash ./files/output/result ; 2 --> 21/42sh ./files/output/result\n"
+
+printf "\033[31m"
 cat ./files/output/result.txt
+printf "\033[0m"
 
 if [ $var1 -eq 0 ] && [ $var2 -eq 0 ]
 	then

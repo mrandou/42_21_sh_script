@@ -1,0 +1,23 @@
+15c15
+<       22$
+---
+>       28$
+29,30d28
+< SHELL=/bin/zsh$
+< HOMEBREW_TEMP=/tmp/mrandou/Homebrew/Temp$
+31a30,31
+> HOMEBREW_TEMP=/tmp/mrandou/Homebrew/Temp$
+> SHELL=/bin/zsh$
+46a47
+> SHLVL=6$
+48,49d48
+< SHLVL=7$
+< LOGNAME=mrandou$
+50a50
+> LOGNAME=mrandou$
+52c52
+< _=/usr/bin/env$
+---
+> _=#BUILTINS$
+54d53
+< /Users/mrandou/Projets/42_21_sh_script
