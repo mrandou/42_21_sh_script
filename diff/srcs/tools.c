@@ -6,7 +6,7 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 13:19:45 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/15 11:58:46 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/15 17:35:55 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ void	print_spaces(int nb)
 		ft_putchar(' ');
 		nb--;
 	}
+}
+
+void	print_ansi(char *ansi, int nb)
+{
+	ft_putstr("\033[");
+	if (nb)
+		ft_putnbr(nb);
+	ft_putstr(ansi);
 }
 
 int		print_nstr(char *str, int nb)
@@ -40,7 +48,7 @@ int		print_nstr(char *str, int nb)
 	return (0);
 }
 
-void	restore_files(struct s_file *files)
+void	reverse_files(struct s_file *files)
 {
 	files->file1 = reverse_dlst(files->file1);
 	files->file2 = reverse_dlst(files->file2);

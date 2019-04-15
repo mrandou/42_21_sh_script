@@ -6,7 +6,7 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 16:06:45 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/13 17:23:59 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/15 17:52:59 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	dlst_push(t_dlist **dlist, char *content, int number)
 		return ;
 	}
 	newlist->number = number;
+	newlist->select = 0;
 	newlist->next = *dlist;
 	newlist->prev = NULL;
 	if (*dlist)

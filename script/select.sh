@@ -6,7 +6,7 @@
 #    By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/11 17:37:09 by mrandou           #+#    #+#              #
-#    Updated: 2019/04/11 18:40:41 by mrandou          ###   ########.fr        #
+#    Updated: 2019/04/15 15:33:29 by mrandou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,12 @@ select i in "Operators"; do
 			test="./files/test/operators/op_and.sh"
 		elif [ "$ret" = 4 ]; then
 			test="./files/test/operators/op_bang.sh"
+		elif [ "$ret" = 5 ]; then
+			test="./files/test/operators/semicolon.sh"
+		elif [ "$ret" = 6 ]; then
+			test="./files/test/operators/redir_right.sh"
+		elif [ "$ret" = 7 ]; then
+			test="./files/test/operators/redir_left.sh"
 		fi
 		break	
 	else
