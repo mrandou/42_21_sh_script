@@ -6,7 +6,7 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 14:47:19 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/13 18:21:22 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/15 12:11:16 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int		term_select(struct s_file *files)
 
 	if (ioctl(0, TIOCGWINSZ, &window) == -1)
 		return (FAILURE);
-	ft_putstr("\033[42m");
-	ft_putstr(files->file1->content);
+	ft_putstr("\033[7m");
+	put_column_str(files->file1, files->file2);
 	ft_putstr(C_OFF);
 	ft_putstr("\033[");
 	ft_putnbr(window.ws_col);
@@ -58,8 +58,16 @@ int		term_check(char *buff, struct s_file *files)
 			return (NO_TERM);
 		return (SUCCESS);
 	}
-	if (!ft_strcmp(buff, ENTER))
+	if (!ft_strcmp(buff, SPACE))
 	{
+		term_select(files);
+		usleep(120000);
+		ft_putstr("\033[K");
+		usleep(120000);
+		term_select(files);
+		usleep(120000);
+		ft_putstr("\033[K");
+		usleep(120000);
 		term_select(files);
 		return (NO_TERM);
 	}

@@ -6,7 +6,7 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 13:19:45 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/13 18:11:15 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/15 11:58:46 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,21 @@ void	print_spaces(int nb)
 	}
 }
 
-void	print_nstr(char *str, int nb)
+int		print_nstr(char *str, int nb)
 {
 	int	i;
+	int	size;
 
+	size = ft_strlen(str);
 	i = 0;
 	while (str[i] && i < nb - 6)
 		ft_putchar(str[i++]);
 	if (i >= nb - 6)
+	{
 		ft_putstr(" (...)");
+		return (nb);
+	}
+	return (0);
 }
 
 void	restore_files(struct s_file *files)

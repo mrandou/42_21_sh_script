@@ -6,7 +6,7 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:05:14 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/13 18:20:19 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/15 12:09:47 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,18 @@ void	print_compare(struct s_file *files)
 	{
 		if (!ft_strcmp(files->file1->content, files->file2->content))
 		{
+			usleep(30000);
 			ft_putstr(C_GREEN);
-			put_column_str(files->file1, files->file2);
+			put_column_str(files->file1, files->file2);	
+			ft_putchar('\n');
 			ft_putstr(C_OFF);
 		}
 		else
 		{
+			usleep(30000);
 			ft_putstr(C_RED);
 			put_column_str(files->file1, files->file2);
+			ft_putchar('\n');
 			ft_putstr(C_OFF);
 		}
 		if (files->file1->prev)

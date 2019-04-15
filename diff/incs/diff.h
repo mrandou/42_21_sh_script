@@ -6,7 +6,7 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 13:12:05 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/13 18:16:46 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/15 12:11:08 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 #define AE_UP		"\033[A"
 #define AE_DOWN		"\033[B"
 #define ENTER		"\n"
+#define SPACE		" "
 
 #define SUCCESS	0
 #define FAILURE	1
@@ -52,9 +53,10 @@ typedef	struct		s_file
 }					t_file;
 
 void				put_column_str(struct s_dlist *f1, struct s_dlist *f2);
+// void				put_right_left_column(char *s1, char *s2, int line);
 
 void				print_spaces(int nb);
-void				print_nstr(char *str, int nb);
+int					print_nstr(char *str, int nb);
 struct s_dlist		*reverse_dlst(struct s_dlist *dlist);
 void				restore_files(struct s_file *files);
 
