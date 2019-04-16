@@ -1,23 +1,26 @@
 19c19
-<       21$
+<       18$
 ---
->       27$
+>       24$
 37,38d36
-< SHELL=/bin/zsh$
 < HOMEBREW_TEMP=/tmp/mrandou/Homebrew/Temp$
+< TERM=xterm-256color$
 39a38,39
+> TERM=xterm-256color$
 > HOMEBREW_TEMP=/tmp/mrandou/Homebrew/Temp$
-> SHELL=/bin/zsh$
-54a55
-> SHLVL=4$
-56,57d56
-< SHLVL=5$
-< LOGNAME=mrandou$
-58a58
-> LOGNAME=mrandou$
-60c60
+58,59d57
+< SHLVL=4$
+< HOME=/Users/mrandou$
+60a59,60
+> HOME=/Users/mrandou$
+> SHLVL=3$
+62d61
+< LESS=-R$
+63a63
+> LESS=-R$
+67c67
 < _=/usr/bin/env$
 ---
 > _=#BUILTINS$
-62d61
+69d68
 < /Users/mrandou/Projets/42_21_sh_script
