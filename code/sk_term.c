@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sk_tools.c                                         :+:      :+:    :+:   */
+/*   sk_term.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/16 16:16:55 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/17 18:00:37 by mrandou          ###   ########.fr       */
+/*   Created: 2019/04/17 15:39:25 by mrandou           #+#    #+#             */
+/*   Updated: 2019/04/17 15:42:27 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shake42.h"
 
-int		sk_header(void)
-{
-	ft_putstr(C_BLUE);
-	ft_putstr(AE_CLEAR);
-	sk_exec_cmd("/bin/cat", "cat ./misc/header.txt", NULL);
-	ft_putendl(C_OFF"\n\n");
+int		sk_set_term_attributes(struct termios *backup)
+{ 
+	struct termios  s_set;
+
+	if (tcgetattr(STDIN_FILENO, &s_set))
+		return (FAILURE);
+	*backup = s_set;
+	s_set.c_lflag &= ~(ICANON | ECHO);
+	if (tcsetattr(STDIN_FILENO, 0, &s_set))
+		return (FAILURE);
 	return (SUCCESS);
 }
 
-void	sk_print_nspace(int nb)
+int		sk_reset_term_attributes(struct termios *backup)
 {
-	if (nb < 0)
-		return ;
-	while (nb)
-	{
-		ft_putchar(' ');
-		nb--;
-	}
-}
-
-void	sk_print_ansi(char *ansi, int nb)
-{
-	ft_putstr("\033[");
-	if (nb)
-		ft_putnbr(nb);
-	ft_putstr(ansi);
+	if (tcsetattr(STDIN_FILENO, 0, backup) == -1)
+		return (FAILURE);
+	return (SUCCESS);
 }

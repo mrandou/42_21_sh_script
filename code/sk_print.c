@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sk_tools.c                                         :+:      :+:    :+:   */
+/*   sk_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/16 16:16:55 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/17 18:00:37 by mrandou          ###   ########.fr       */
+/*   Created: 2019/04/17 16:07:46 by mrandou           #+#    #+#             */
+/*   Updated: 2019/04/17 16:24:29 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shake42.h"
 
-int		sk_header(void)
+void	sk_print_center(char *str, int col, char *color)
 {
-	ft_putstr(C_BLUE);
-	ft_putstr(AE_CLEAR);
-	sk_exec_cmd("/bin/cat", "cat ./misc/header.txt", NULL);
-	ft_putendl(C_OFF"\n\n");
-	return (SUCCESS);
-}
+	int	size;
 
-void	sk_print_nspace(int nb)
-{
-	if (nb < 0)
-		return ;
-	while (nb)
+	size = ft_strlen(str);
+	if (size > col)
 	{
-		ft_putchar(' ');
-		nb--;
+		ft_putstr(str);
+		return ;
 	}
-}
-
-void	sk_print_ansi(char *ansi, int nb)
-{
-	ft_putstr("\033[");
-	if (nb)
-		ft_putnbr(nb);
-	ft_putstr(ansi);
+	sk_print_nspace(((col - 1) / 2) - (size / 2));
+	if (color)
+		ft_putstr(color);
+	ft_putstr(str);
+	if (color)
+		ft_putstr(C_OFF);
+	sk_print_nspace((col / 2) - (size / 2));
 }

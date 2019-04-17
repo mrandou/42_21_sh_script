@@ -6,7 +6,7 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 16:16:57 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/16 16:17:15 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/17 18:00:40 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		sk_fork(char *cmd, char **array, char **env)
 	return (SUCCESS);
 }
 
-int		sk_exec(char *path, char *cmd, char **env)
+int		sk_exec_cmd(char *path, char *cmd, char **env)
 {
 	char	**array;
 
