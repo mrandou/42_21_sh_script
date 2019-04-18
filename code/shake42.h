@@ -6,7 +6,7 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 11:26:10 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/17 18:32:04 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/18 17:51:46 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,28 @@ typedef enum		e_selectnum
 	SL_EXIT
 }					t_selectnum;
 
+typedef enum		e_stepenum
+{
+	STP_MAIN_MENU,
+	STP_EXEC,
+	STP_CHECK
+}					s_stepenum;
+
+typedef struct		s_sk
+{
+	struct termios	backup;
+	struct winsize	window;
+	char			path[1024];
+	int				action;
+	int				select;
+	int				step;
+}					t_sk;
+
 int		sk_fork(char *cmd, char **array, char **env);
 int		sk_exec_cmd(char *path, char *cmd, char **env);
 
 int		sk_path(char *path);
+int		sk_path_reset(struct s_sk *sk);
 
 int		sk_set_term_attributes(struct termios *backup);
 int		sk_reset_term_attributes(struct termios *backup);
@@ -83,12 +101,18 @@ int		sk_reset_term_attributes(struct termios *backup);
 int		sk_header(void);
 void	sk_print_nspace(int nb);
 void	sk_print_ansi(char *ansi, int nb);
+void	sk_reset(void);
 
 void	sk_print_center(char *str, int col, char *color);
 
+int		sk_check_tests(struct s_sk *sk);
+void	sk_check_tests_menu_select(struct s_sk *sk);
+void	sk_check_tests_menu_line(int select, char *color);
+void	sk_check_tests_menu(struct s_sk *sk);
+
 void	sk_main_menu(int col);
 void	sk_main_menu_line(int select, char *color);
-void 	sk_main_menu_select(int action, int *select, int col);
-int		sk_main_menu_blink(int col, int select);
+void 	sk_main_menu_select(struct s_sk *sk);
+int		sk_menu_blink(struct s_sk *sk);
 
 #endif

@@ -1,26 +1,24 @@
 19c19
-<       18$
+<        9$
 ---
->       24$
+>       15$
 37,38d36
-< HOMEBREW_TEMP=/tmp/mrandou/Homebrew/Temp$
 < TERM=xterm-256color$
+< HOMEBREW_TEMP=/tmp/mrandou/Homebrew/Temp$
 39a38,39
-> TERM=xterm-256color$
 > HOMEBREW_TEMP=/tmp/mrandou/Homebrew/Temp$
-58,59d57
+> TERM=xterm-256color$
+56d55
 < SHLVL=4$
-< HOME=/Users/mrandou$
-60a59,60
-> HOME=/Users/mrandou$
-> SHLVL=3$
-62d61
+58c57
 < LESS=-R$
-63a63
+---
+> SHLVL=3$
+59a59
 > LESS=-R$
-67c67
+62c62
 < _=/usr/bin/env$
 ---
 > _=#BUILTINS$
-69d68
+64d63
 < /Users/mrandou/Projets/42_21_sh_script

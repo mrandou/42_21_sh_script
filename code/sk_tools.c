@@ -6,7 +6,7 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 16:16:55 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/17 18:00:37 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/18 14:31:20 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,10 @@ void	sk_print_ansi(char *ansi, int nb)
 	if (nb)
 		ft_putnbr(nb);
 	ft_putstr(ansi);
+}
+
+void	sk_reset(void)
+{
+	ft_putstr(AE_CLEAR);
+	sk_header();
 }

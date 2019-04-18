@@ -6,7 +6,7 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 17:51:52 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/17 18:22:19 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/18 17:46:39 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,46 +42,52 @@ void	sk_main_menu_line(int select, char *color)
 		ft_putstr(C_OFF);
 }
 
-void 	sk_main_menu_select(int action, int *select, int col)
+void 	sk_main_menu_select(struct s_sk *sk)
 {
-	if (action == A_DOWN && *select < 4)
+	if (sk->action == A_DOWN && sk->select < 4)
 	{
-		sk_print_ansi("D", col);
+		sk_print_ansi("D", sk->window.ws_col);
 		sk_print_ansi("C", NB_SP_TABS);
-		sk_main_menu_line(*select, AE_UNSELECT);
+		sk_main_menu_line(sk->select, AE_UNSELECT);
 		sk_print_ansi("B", 2);
-		sk_print_ansi("D", col);
+		sk_print_ansi("D", sk->window.ws_col);
 		sk_print_ansi("C", NB_SP_TABS);
-		*select += 1;
-		sk_main_menu_line(*select, AE_SELECT);
+		sk->select += 1;
+		sk_main_menu_line(sk->select, AE_SELECT);
 	}
-	if (action == A_UP && *select > 1)
+	if (sk->action == A_UP && sk->select > 1)
 	{
-		sk_print_ansi("D", col);
+		sk_print_ansi("D", sk->window.ws_col);
 		sk_print_ansi("C", NB_SP_TABS);
-		sk_main_menu_line(*select, AE_UNSELECT);
+		sk_main_menu_line(sk->select, AE_UNSELECT);
 		sk_print_ansi("A", 2);
-		sk_print_ansi("D", col);
+		sk_print_ansi("D", sk->window.ws_col);
 		sk_print_ansi("C", NB_SP_TABS);
-		*select -= 1;
-		sk_main_menu_line(*select, AE_SELECT);
+		sk->select -= 1;
+		sk_main_menu_line(sk->select, AE_SELECT);
 	}
 }
 
-int		sk_main_menu_blink(int col, int select)
+int		sk_menu_blink(struct s_sk *sk)
 {
 	int	blink;
 
 	blink = 2;
 	while (blink)
 	{
-		sk_print_ansi("D", col);
+		sk_print_ansi("D", sk->window.ws_col);
 		sk_print_ansi("C", NB_SP_TABS);
-		sk_main_menu_line(select, AE_UNSELECT);
+		if (sk->step == STP_MAIN_MENU)
+			sk_main_menu_line(sk->select, AE_UNSELECT);
+		if (sk->step == STP_CHECK)
+			sk_check_tests_menu_line(sk->select, AE_UNSELECT);
 		usleep(120000);
-		sk_print_ansi("D", col);
+		sk_print_ansi("D", sk->window.ws_col);
 		sk_print_ansi("C", NB_SP_TABS);
-		sk_main_menu_line(select, AE_SELECT);
+		if (sk->step == STP_MAIN_MENU)
+			sk_main_menu_line(sk->select, AE_SELECT);
+		if (sk->step == STP_CHECK)
+			sk_check_tests_menu_line(sk->select, AE_UNSELECT);
 		usleep(120000);
 		blink--;
 	}

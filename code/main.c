@@ -6,7 +6,7 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 11:25:30 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/17 18:34:04 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/18 17:55:34 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,63 +27,67 @@ int		sk_check_action(char *buff)
 	return (A_NOTHING);
 }
 
-int		sk_exec(char *path, int action, int select, int col)
+int		sk_exec(struct s_sk *sk)
 {
-	if (select == SL_CHGPATH)
+	sk_menu_blink(sk);
+	sk_reset();
+	if (sk->select == SL_CHECK || sk->step == STP_CHECK)
+		if (sk_check_tests(sk))
+			return (FAILURE);
+	if (sk->select == SL_CHGPATH)
 	{
-		sk_main_menu_blink(col, select);
-		ft_putstr(AE_CLEAR);	
+		sk_path_reset(sk);
+		sk_reset();
+		sk->step = STP_MAIN_MENU;
+		sk->select = 1;
+		sk_main_menu(sk->window.ws_col);
 	}
 	return (SUCCESS);
 }
 
-int		shake42(char *path)
+int		shake42(struct s_sk *sk)
 {
 	char			buff[8];
-	struct	winsize	window;
-	int				action;
-	int				select;
-	int				step;
 
-	action = 0;
-	select = 1;
-	step = 0;
-	if (ioctl(0, TIOCGWINSZ, &window) == -1)
+	sk->action = 0;
+	sk->select = 1;
+	sk->step = STP_MAIN_MENU;
+	if (ioctl(0, TIOCGWINSZ, &sk->window) == -1)
 		return (FAILURE);
-	sk_main_menu(window.ws_col);
+	sk_main_menu(sk->window.ws_col);
 	while (1)
 	{
 		ft_bzero(buff, 8);
 		if (read(STDIN_FILENO, &buff, 8) == -1)
 			return (FAILURE);
-		action = sk_check_action(buff);
-		if (action != A_ENTER && !step)
-			sk_main_menu_select(action, &select, window.ws_col);
+		sk->action = sk_check_action(buff);
+		if (sk->action != A_ENTER && sk->step == STP_MAIN_MENU)
+			sk_main_menu_select(sk);
 		else
 		{
-			if (select == SL_EXIT && !step)
-				return (sk_main_menu_blink(window.ws_col, select));
-			step++;
-			sk_exec(path, action, select, window.ws_col);
+			if (sk->select == SL_EXIT && sk->step == STP_MAIN_MENU)
+				return (sk_menu_blink(sk));
+			if (sk_exec(sk))
+				return (FAILURE);
 		}
 	}
 	return (SUCCESS);
 }
 
-int		 main(int argc, char **argv, char **env)
+int		 main(void)
 {
-	struct termios	backup;
-	char			path[1024];
+	struct s_sk	sk;
 
 	sk_header();
-	if (sk_path(path))
+	if (sk_path(sk.path))
 		return (FAILURE);
-	if (sk_set_term_attributes(&backup))
+	sk_reset();
+	if (sk_set_term_attributes(&sk.backup))
 		return (FAILURE);
-	if (shake42(path))
+	if (shake42(&sk))
 		return (FAILURE);
 	ft_putendl(AE_CUR_ON"\n");
-	if (sk_reset_term_attributes(&backup))
+	if (sk_reset_term_attributes(&sk.backup))
 		return (FAILURE);
 	return (0);
 }
