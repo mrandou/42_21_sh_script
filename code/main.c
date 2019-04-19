@@ -6,7 +6,7 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 11:25:30 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/18 17:55:34 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/19 17:24:58 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,49 +27,28 @@ int		sk_check_action(char *buff)
 	return (A_NOTHING);
 }
 
-int		sk_exec(struct s_sk *sk)
-{
-	sk_menu_blink(sk);
-	sk_reset();
-	if (sk->select == SL_CHECK || sk->step == STP_CHECK)
-		if (sk_check_tests(sk))
-			return (FAILURE);
-	if (sk->select == SL_CHGPATH)
-	{
-		sk_path_reset(sk);
-		sk_reset();
-		sk->step = STP_MAIN_MENU;
-		sk->select = 1;
-		sk_main_menu(sk->window.ws_col);
-	}
-	return (SUCCESS);
-}
-
 int		shake42(struct s_sk *sk)
 {
 	char			buff[8];
+	int				ret;
 
+	ret = 0;
 	sk->action = 0;
 	sk->select = 1;
+	sk->act_max = 4;
 	sk->step = STP_MAIN_MENU;
 	if (ioctl(0, TIOCGWINSZ, &sk->window) == -1)
 		return (FAILURE);
-	sk_main_menu(sk->window.ws_col);
+	sk_main_menu(sk);
 	while (1)
 	{
 		ft_bzero(buff, 8);
 		if (read(STDIN_FILENO, &buff, 8) == -1)
 			return (FAILURE);
 		sk->action = sk_check_action(buff);
-		if (sk->action != A_ENTER && sk->step == STP_MAIN_MENU)
-			sk_main_menu_select(sk);
-		else
-		{
-			if (sk->select == SL_EXIT && sk->step == STP_MAIN_MENU)
-				return (sk_menu_blink(sk));
-			if (sk_exec(sk))
-				return (FAILURE);
-		}
+		ret = sk_step(sk);
+		if (ret != CONTINUE)
+			return (ret);
 	}
 	return (SUCCESS);
 }
@@ -84,7 +63,7 @@ int		 main(void)
 	sk_reset();
 	if (sk_set_term_attributes(&sk.backup))
 		return (FAILURE);
-	if (shake42(&sk))
+	if (shake42(&sk) == FAILURE)
 		return (FAILURE);
 	ft_putendl(AE_CUR_ON"\n");
 	if (sk_reset_term_attributes(&sk.backup))

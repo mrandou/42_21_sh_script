@@ -6,7 +6,7 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 11:26:10 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/18 17:51:46 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/19 17:24:42 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@
 
 #define SUCCESS		0
 #define FAILURE		1
+#define CONTINUE	2
 #define RESET		4
 #define ERROR		-1
 
@@ -69,14 +70,17 @@ typedef enum		e_selectnum
 	SL_CHECK = 1,
 	SL_OLDRESULT,
 	SL_CHGPATH,
-	SL_EXIT
+	SL_EXIT,
+	SLC_OP = 1,
+	SLC_RET
 }					t_selectnum;
 
 typedef enum		e_stepenum
 {
 	STP_MAIN_MENU,
 	STP_EXEC,
-	STP_CHECK
+	STP_CHECK,
+	STP_CHGPATH
 }					s_stepenum;
 
 typedef struct		s_sk
@@ -87,6 +91,7 @@ typedef struct		s_sk
 	int				action;
 	int				select;
 	int				step;
+	int				act_max;
 }					t_sk;
 
 int		sk_fork(char *cmd, char **array, char **env);
@@ -105,14 +110,16 @@ void	sk_reset(void);
 
 void	sk_print_center(char *str, int col, char *color);
 
-int		sk_check_tests(struct s_sk *sk);
-void	sk_check_tests_menu_select(struct s_sk *sk);
-void	sk_check_tests_menu_line(int select, char *color);
-void	sk_check_tests_menu(struct s_sk *sk);
+int		sk_step(struct s_sk *sk);
+int		sk_step_check(struct s_sk *sk);
 
-void	sk_main_menu(int col);
-void	sk_main_menu_line(int select, char *color);
-void 	sk_main_menu_select(struct s_sk *sk);
+void	sk_main_menu(struct s_sk *sk);
+void	sk_check_tests_menu(struct s_sk *sk);
+void 	sk_menu_select(struct s_sk *sk);
 int		sk_menu_blink(struct s_sk *sk);
+
+void	sk_menu_line(struct s_sk *sk, char *mode);
+void	sk_menu_line_main(int select);
+void	sk_menu_line_check(int select);
 
 #endif
