@@ -6,7 +6,7 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 11:25:30 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/19 17:24:58 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/19 18:02:22 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int		shake42(struct s_sk *sk)
 	sk_main_menu(sk);
 	while (1)
 	{
+		if (ioctl(0, TIOCGWINSZ, &sk->window) == -1)
+			return (FAILURE);
 		ft_bzero(buff, 8);
 		if (read(STDIN_FILENO, &buff, 8) == -1)
 			return (FAILURE);

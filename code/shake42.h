@@ -6,7 +6,7 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 11:26:10 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/19 17:24:42 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/19 19:44:21 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,24 @@ typedef enum		e_selectnum
 	SL_CHGPATH,
 	SL_EXIT,
 	SLC_OP = 1,
-	SLC_RET
+	SLC_RET,
+	SLO_SPIPE = 1,
+	SLO_OR,
+	SLO_AMP,
+	SLO_AND,
+	SLO_REDIR_R,
+	SLO_REDIR_L,
+	SLO_BANG,
+	SLO_SEMICOLON,
+	SLO_RET
 }					t_selectnum;
 
 typedef enum		e_stepenum
 {
 	STP_MAIN_MENU,
-	STP_EXEC,
 	STP_CHECK,
-	STP_CHGPATH
+	STP_CHGPATH,
+	STP_OP
 }					s_stepenum;
 
 typedef struct		s_sk
@@ -111,15 +120,22 @@ void	sk_reset(void);
 void	sk_print_center(char *str, int col, char *color);
 
 int		sk_step(struct s_sk *sk);
-int		sk_step_check(struct s_sk *sk);
+int		sk_step_check_tests(struct s_sk *sk);
+int		sk_step_ct_operators(struct s_sk *sk);
 
 void	sk_main_menu(struct s_sk *sk);
 void	sk_check_tests_menu(struct s_sk *sk);
+void	sk_ct_operators_menu(struct s_sk *sk);
 void 	sk_menu_select(struct s_sk *sk);
 int		sk_menu_blink(struct s_sk *sk);
 
 void	sk_menu_line(struct s_sk *sk, char *mode);
 void	sk_menu_line_main(int select);
 void	sk_menu_line_check(int select);
+void	sk_menu_line_ct_operators(int select);
+
+void	sk_start_main_menu(struct s_sk *sk);
+void	sk_start_check_test(struct s_sk *sk);
+void	sk_start_ct_operators(struct s_sk *sk);
 
 #endif
