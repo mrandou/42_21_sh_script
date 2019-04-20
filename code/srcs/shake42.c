@@ -6,7 +6,7 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 11:25:30 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/20 16:58:10 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/20 18:46:03 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,14 @@ int		shake42(struct s_sk *sk)
 	return (SUCCESS);
 }
 
-int		 main(void)
+int		 main(int argc, char **argv, char **env)
 {
 	struct s_sk	sk;
-
+	
+	(void)argc;
+	(void)argv;
 	sk_header();
+	sk.env = env;
 	if (sk_path(sk.path))
 		return (FAILURE);
 	sk_reset();

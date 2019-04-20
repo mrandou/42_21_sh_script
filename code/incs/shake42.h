@@ -6,7 +6,7 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 11:26:10 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/20 16:49:02 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/20 18:44:08 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@
 #define ENTER		"\n"
 #define SPACE		" "
 
-#define SH_PATH		".shake_shpath"
+#define SH_PATH		"./resources/.shake_shpath"
+#define LAUNCHER	"./resources/scripts/launcher.sh"
+#define T_OP		"./resources/scripts/tests/operators/"
+#define T_OP_SPIPE	T_OP"simple_pipe"
 
 #define	SP_TABS		"        "
 #define NB_SP_TABS	8
@@ -97,6 +100,7 @@ typedef struct		s_sk
 	struct termios	backup;
 	struct winsize	window;
 	char			path[1024];
+	char			**env;
 	int				action;
 	int				select;
 	int				step;
@@ -105,6 +109,7 @@ typedef struct		s_sk
 
 int		sk_fork(char *cmd, char **array, char **env);
 int		sk_exec_cmd(char *path, char *cmd, char **env);
+int		sk_exec_script(char *path, char *test, char **env);
 
 int		sk_path(char *path);
 int		sk_path_reset(struct s_sk *sk);

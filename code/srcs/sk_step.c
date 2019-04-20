@@ -6,7 +6,7 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:21:42 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/20 16:58:35 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/20 18:58:17 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ int		sk_step_check_tests(struct s_sk *sk)
 		sk_menu_blink(sk);
 		if (sk->step == STP_CHECK && sk->select == SLC_OP)
 			sk_start_ct_operators(sk);
+		else if (sk->step == STP_OP)
+			return (sk_step_ct_operators(sk));
 		if (sk->step == STP_CHECK && sk->select == SLC_RET)
 			sk_start_main_menu(sk);
-		if (sk->step == STP_OP)
-			return (sk_step_ct_operators(sk));
 	}
 	return (CONTINUE);
 }
@@ -55,6 +55,11 @@ int		sk_step_ct_operators(struct s_sk *sk)
 	{
 		if (sk->select == SLO_RET)
 			sk_start_check_test(sk);
+		if (sk->select == SLO_SPIPE)
+		{
+			if (sk_exec_script(sk->path, T_OP_SPIPE, sk->env))
+				return (FAILURE);
+		}
 	}
 	return (CONTINUE);
 }

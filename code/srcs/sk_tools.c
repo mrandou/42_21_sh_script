@@ -6,7 +6,7 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 16:16:55 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/20 16:58:42 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/20 17:20:11 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		sk_header(void)
 {
 	ft_putstr(C_BLUE);
 	ft_putstr(AE_CLEAR);
-	sk_exec_cmd("/bin/cat", "cat ./misc/header.txt", NULL);
+	sk_exec_cmd("/bin/cat", "cat ./resources/misc/header.txt", NULL);
 	ft_putendl(C_OFF"\n\n");
 	return (SUCCESS);
 }

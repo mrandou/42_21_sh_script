@@ -6,7 +6,7 @@
 #    By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/20 14:17:11 by mrandou           #+#    #+#              #
-#    Updated: 2019/04/20 16:57:45 by mrandou          ###   ########.fr        #
+#    Updated: 2019/04/20 17:00:29 by mrandou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,7 +104,8 @@ $(OBJ_DIR)%.o:		 $(SRC_DIR)%.c ./Makefile $(INC)
 	@printf "> Shake42 <"
 	@printf "\r\033[0m\n\033[K\033[A\033[K"
 	
-
+start: all
+	./shake42
 
 clean:
 	@make -C libft clean
