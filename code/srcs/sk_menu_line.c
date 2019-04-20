@@ -6,11 +6,11 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:19:34 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/19 19:20:47 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/20 16:58:14 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shake42.h"
+#include "../incs/shake42.h"
 
 void	sk_menu_line(struct s_sk *sk, char *mode)
 {

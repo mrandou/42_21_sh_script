@@ -1,77 +1,38 @@
+.
+..
+.git
 code
 diff
 files
 misc
 script
 shake_42
-       6$
-       6$$
-total 8$
-drwxr-xr-x   9 mrandou  2017_paris   306 Apr 16 11:24 ./$
-drwxr-xr-x  15 mrandou  2017_paris   510 Apr 11 18:39 ../$
-drwxr-xr-x  13 mrandou  2017_paris   442 Apr 18 14:41 .git/$
-drwxr-xr-x  13 mrandou  2017_paris   442 Apr 18 14:36 code/$
-drwxr-xr-x   9 mrandou  2017_paris   306 Apr 15 18:01 diff/$
-drwxr-xr-x   4 mrandou  2017_paris   136 Apr  5 17:47 files/$
-drwxr-xr-x   3 mrandou  2017_paris   102 Apr  9 14:01 misc/$
-drwxr-xr-x   7 mrandou  2017_paris   238 Apr 12 16:12 script/$
--rwxr-xr-x   1 mrandou  2017_paris  2196 Apr 12 14:08 shake_42*$
-      15$
-total 8$$$$$$$$
-drwxr-xr-x   9 mrandou  2017_paris   306 Apr 16 11:24 ./$$$$$$$$
-drwxr-xr-x  15 mrandou  2017_paris   510 Apr 11 18:39 ../$$$$$$$$
-drwxr-xr-x  13 mrandou  2017_paris   442 Apr 18 14:41 .git/$$$$$$$$
-drwxr-xr-x  13 mrandou  2017_paris   442 Apr 18 14:36 code/$$$$$$$$
-drwxr-xr-x   9 mrandou  2017_paris   306 Apr 15 18:01 diff/$$$$$$$$
-drwxr-xr-x   4 mrandou  2017_paris   136 Apr  5 17:47 files/$$$$$$$$
-drwxr-xr-x   3 mrandou  2017_paris   102 Apr  9 14:01 misc/$$$$$$$$
-drwxr-xr-x   7 mrandou  2017_paris   238 Apr 12 16:12 script/$$$$$$$$
--rwxr-xr-x   1 mrandou  2017_paris  2196 Apr 12 14:08 shake_42*$$$$$$$$
-code$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-diff$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-files$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-misc$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-script$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-shake_42$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-TERM_PROGRAM=vscode$
-SHELL=/bin/zsh$
-HOMEBREW_TEMP=/tmp/mrandou/Homebrew/Temp$
-TERM=xterm-256color$
-TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002zq4000qxs/T/$
-Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.RCBrh5kU0s/Render$
-TERM_PROGRAM_VERSION=1.27.2$
-ZSH=/Users/mrandou/.oh-my-zsh$
-USER=mrandou$
-COMMAND_MODE=unix2003$
-SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.7nGzWrzahl/Listeners$
-__CF_USER_TEXT_ENCODING=0x5FB9:0:0$
-PAGER=less$
-HOMEBREW_CACHE=/tmp/mrandou/Homebrew/Caches$
-LSCOLORS=Gxfxcxdxbxegedabagacad$
-PATH=/Users/mrandou/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki:/Users/mrandou/.brew/bin$
-PWD=/Users/mrandou/Projets/42_21_sh_script$
-LANG=en_US.UTF-8$
-XPC_FLAGS=0x0$
-XPC_SERVICE_NAME=0$
-HOME=/Users/mrandou$
-SHLVL=3$
-LOGNAME=mrandou$
-LESS=-R$
-LC_CTYPE=en_US.UTF-8$
-SECURITYSESSIONID=186a7$
-_=#BUILTINS$
-       0$
-LOL
-       6       6      37$
-code$
-diff$
-files$
-misc$
-script$
-shake_42$
-code$$$$
-diff$$$$
-files$$$$
-misc$$$$
-script$$$$
-shake_42$$$$
+tmp_file
+toto
+TERM_PROGRAM=vscode
+SHELL=/bin/zsh
+TERM=xterm-256color
+HOMEBREW_TEMP=/tmp/mrandou/Homebrew/Temp
+TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0002zq4000qxs/T/
+Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.2tQpeGiGJc/Render
+TERM_PROGRAM_VERSION=1.27.2
+ZSH=/Users/mrandou/.oh-my-zsh
+USER=mrandou
+COMMAND_MODE=unix2003
+SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.bouFnunj5b/Listeners
+__CF_USER_TEXT_ENCODING=0x5FB9:0:0
+PAGER=less
+HOMEBREW_CACHE=/tmp/mrandou/Homebrew/Caches
+LSCOLORS=Gxfxcxdxbxegedabagacad
+PATH=/Users/mrandou/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/go/bin:/usr/local/munki
+PWD=/Users/mrandou/Projets/42_21_sh_script
+LANG=en_US.UTF-8
+XPC_FLAGS=0x0
+XPC_SERVICE_NAME=0
+HOME=/Users/mrandou
+SHLVL=3
+LOGNAME=mrandou
+LESS=-R
+LC_CTYPE=en_US.UTF-8
+SECURITYSESSIONID=186c6
+_=toto

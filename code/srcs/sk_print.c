@@ -6,11 +6,11 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 16:07:46 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/17 16:24:29 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/20 16:58:27 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shake42.h"
+#include "../incs/shake42.h"
 
 void	sk_print_center(char *str, int col, char *color)
 {

@@ -6,11 +6,11 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 16:16:57 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/17 18:00:40 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/20 16:58:04 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shake42.h"
+#include "../incs/shake42.h"
 
 int		sk_fork(char *cmd, char **array, char **env)
 {
@@ -31,7 +31,7 @@ int		sk_exec_cmd(char *path, char *cmd, char **env)
 
 	if (!(array = ft_strsplit(cmd, ' ')))
 		return (FAILURE);
-	if (sk_fork(path, array, NULL))
+	if (sk_fork(path, array, env))
 	{
 		ft_tabdel(array);
 		return (FAILURE);

@@ -6,11 +6,11 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 17:55:08 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/18 16:05:54 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/20 16:58:23 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shake42.h"
+#include "../incs/shake42.h"
 
 int		sk_path_is_valid(char *path)
 {

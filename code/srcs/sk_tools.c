@@ -6,11 +6,11 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 16:16:55 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/18 14:31:20 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/20 16:58:42 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shake42.h"
+#include "../incs/shake42.h"
 
 int		sk_header(void)
 {

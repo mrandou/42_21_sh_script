@@ -6,11 +6,11 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 15:39:25 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/18 16:43:08 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/20 16:58:39 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shake42.h"
+#include "../incs/shake42.h"
 
 int		sk_set_term_attributes(struct termios *backup)
 { 

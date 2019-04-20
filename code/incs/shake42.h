@@ -6,14 +6,14 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 11:26:10 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/19 19:44:21 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/20 16:49:02 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHAKE42_H
 # define SHAKE42_H
 
-# include "../diff/libft/incs/libft.h"
+# include "../libft/incs/libft.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <sys/ioctl.h>
