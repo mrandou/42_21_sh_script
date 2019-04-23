@@ -6,7 +6,7 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:40:36 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/20 16:58:31 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/23 12:01:55 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	sk_start_main_menu(struct s_sk *sk)
 {
-	sk_reset();
+	sk_reset(sk->env);
 	sk->step = STP_MAIN_MENU;
 	sk->select = SL_CHECK;
 	sk->act_max = 4;
@@ -23,7 +23,7 @@ void	sk_start_main_menu(struct s_sk *sk)
 
 void	sk_start_check_test(struct s_sk *sk)
 {
-	sk_reset();
+	sk_reset(sk->env);
 	sk->select = SLC_OP;
 	sk->step = STP_CHECK;
 	sk->act_max = 2;
@@ -32,7 +32,7 @@ void	sk_start_check_test(struct s_sk *sk)
 
 void	sk_start_ct_operators(struct s_sk *sk)
 {
-	sk_reset();
+	sk_reset(sk->env);
 	sk->step = STP_OP;
 	sk->select = SLO_SPIPE;
 	sk->act_max = 9;

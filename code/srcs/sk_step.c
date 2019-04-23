@@ -6,7 +6,7 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:21:42 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/20 18:58:17 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/23 14:04:00 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		sk_step(struct s_sk *sk)
 			sk_start_check_test(sk);
 		if (sk->select == SL_CHGPATH)
 		{
-			sk_reset();
+			sk_reset(sk->env);
 			if (sk_path_reset(sk))
 				return (FAILURE);
 		}
@@ -59,6 +59,10 @@ int		sk_step_ct_operators(struct s_sk *sk)
 		{
 			if (sk_exec_script(sk->path, T_OP_SPIPE, sk->env))
 				return (FAILURE);
+			ft_putendl("\n"AE_CUR_ON);
+			if (sk_exec_cmd("../diff/diff42", "../diff/diff42 "OUTP_BASH " " OUTP_SH, sk->env))
+				return (FAILURE);
+			ft_putstr(AE_CUR_OFF);
 		}
 	}
 	return (CONTINUE);

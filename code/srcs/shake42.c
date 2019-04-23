@@ -6,7 +6,7 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 11:25:30 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/20 18:46:03 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/23 12:01:18 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,11 @@ int		 main(int argc, char **argv, char **env)
 	
 	(void)argc;
 	(void)argv;
-	sk_header();
+	sk_header(env);
 	sk.env = env;
 	if (sk_path(sk.path))
 		return (FAILURE);
-	sk_reset();
+	sk_reset(env);
 	if (sk_set_term_attributes(&sk.backup))
 		return (FAILURE);
 	if (shake42(&sk) == FAILURE)

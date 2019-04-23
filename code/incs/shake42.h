@@ -6,7 +6,7 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 11:26:10 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/20 18:44:08 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/23 14:03:00 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@
 
 #define SH_PATH		"./resources/.shake_shpath"
 #define LAUNCHER	"./resources/scripts/launcher.sh"
+#define OUTP_BASH	"./resources/scripts/results/output_bash"
+#define OUTP_SH		"./resources/scripts/results/output_sh"
 #define T_OP		"./resources/scripts/tests/operators/"
 #define T_OP_SPIPE	T_OP"simple_pipe"
 
@@ -117,10 +119,10 @@ int		sk_path_reset(struct s_sk *sk);
 int		sk_set_term_attributes(struct termios *backup);
 int		sk_reset_term_attributes(struct termios *backup);
 
-int		sk_header(void);
+int		sk_header(char **env);
 void	sk_print_nspace(int nb);
 void	sk_print_ansi(char *ansi, int nb);
-void	sk_reset(void);
+void	sk_reset(char **env);
 
 void	sk_print_center(char *str, int col, char *color);
 

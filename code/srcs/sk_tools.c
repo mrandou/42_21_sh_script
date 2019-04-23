@@ -6,17 +6,18 @@
 /*   By: mrandou <mrandou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 16:16:55 by mrandou           #+#    #+#             */
-/*   Updated: 2019/04/20 17:20:11 by mrandou          ###   ########.fr       */
+/*   Updated: 2019/04/23 12:06:03 by mrandou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/shake42.h"
 
-int		sk_header(void)
+int		sk_header(char **env)
 {
 	ft_putstr(C_BLUE);
 	ft_putstr(AE_CLEAR);
-	sk_exec_cmd("/bin/cat", "cat ./resources/misc/header.txt", NULL);
+	sk_exec_cmd("./resources/misc/center.sh",
+	"./resources/misc/center.sh ./resources/misc/header.txt", env);
 	ft_putendl(C_OFF"\n\n");
 	return (SUCCESS);
 }
@@ -40,8 +41,8 @@ void	sk_print_ansi(char *ansi, int nb)
 	ft_putstr(ansi);
 }
 
-void	sk_reset(void)
+void	sk_reset(char **env)
 {
 	ft_putstr(AE_CLEAR);
-	sk_header();
+	sk_header(env);
 }
